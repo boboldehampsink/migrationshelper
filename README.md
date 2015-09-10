@@ -8,6 +8,8 @@ The plugin's folder should be named "migrationshelper"
 
 Helpers
 =================
+
+####addToFieldLayout###
 ```
 /**
  * Append a field to a source's fieldlayout programmatically.
@@ -22,6 +24,7 @@ Helpers
  MigrationsHelper::addToFieldLayout($elementType, BaseModel $source, FieldModel $field, $tabName)
 ```
 
+###changeFieldSettings###
 ```
 /**
  * Change the settings of a given field.
