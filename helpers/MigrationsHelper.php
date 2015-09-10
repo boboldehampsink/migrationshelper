@@ -46,11 +46,8 @@ class MigrationsHelper
             // Loop through tab fields
             foreach ($tabfields as $tabfield) {
 
-                // Get field from tabfield
-                $field = $tabfield->getField();
-
                 // Gather field id's
-                $layout[$tab->name][] = $field->id;
+                $layout[$tab->name][] = $tabfield->getField()->id;
             }
         }
 
