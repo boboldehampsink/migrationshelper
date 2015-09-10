@@ -24,7 +24,7 @@ Helpers
  MigrationsHelper::addToFieldLayout($elementType, BaseModel $source, FieldModel $field, $tabName)
 ```
 
-###changeFieldSettings###
+####changeFieldSettings####
 ```
 /**
  * Change the settings of a given field.
