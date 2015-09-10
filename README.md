@@ -15,13 +15,16 @@ Helpers
  * Append a field to a source's fieldlayout programmatically.
  *
  * @param string     $elementType The fieldlayout's Element Type
- * @param BaseModel  $source      The element's source (e.g. a SectionModel or CategoryGroupModel)
+ * @param BaseModel  $source      The element's source (e.g. a EntryTypeModel or CategoryGroupModel)
  * @param FieldModel $field       The field's model
  * @param string     $tabName     The fieldlayout's tab
  *
  * @return BaseModel
  */
- MigrationsHelper::addToFieldLayout($elementType, BaseModel $source, FieldModel $field, $tabName)
+ $source = MigrationsHelper::addToFieldLayout($elementType, BaseModel $source, FieldModel $field, $tabName);
+
+ // Save source (e.g. Entry Type)
+ craft()->sections->saveEntryType($source);
 ```
 
 ####changeFieldSettings####
@@ -33,7 +36,10 @@ Helpers
  * @param string $handle     The field's handle
  * @param array  $attributes An array of key/value settings
  */
- MigrationsHelper::changeFieldSettings($context, $handle, array $attributes)
+ $source = MigrationsHelper::changeFieldSettings($context, $handle, array $attributes);
+
+ // Save source (e.g. Entry Type)
+ craft()->sections->saveEntryType($source);
 ```
 
 Changelog
