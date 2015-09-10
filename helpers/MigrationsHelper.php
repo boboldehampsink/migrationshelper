@@ -17,7 +17,7 @@ class MigrationsHelper
      * Append a field to a source's fieldlayout programmatically.
      *
      * @param string     $elementType The fieldlayout's Element Type
-     * @param BaseModel  $source      The element's source (e.g. a SectionModel or CategoryGroupModel)
+     * @param BaseModel  $source      The element's source (e.g. a EntryTypeModel or CategoryGroupModel)
      * @param FieldModel $field       The field's model
      * @param string     $tabName     The fieldlayout's tab
      *
