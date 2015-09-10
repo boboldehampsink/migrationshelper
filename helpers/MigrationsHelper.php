@@ -80,7 +80,7 @@ class MigrationsHelper
         // Set matrix field context
         craft()->content->fieldContext = $context;
 
-        // Get videos field
+        // Get field
         $field = craft()->fields->getFieldByHandle($handle);
 
         // Get fieldtype

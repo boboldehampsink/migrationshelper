@@ -41,6 +41,13 @@ Helpers
  MigrationsHelper::changeFieldSettings($context, $handle, array $attributes);
 ```
 
+Development
+=================
+Run this from your Craft installation to test your changes to this plugin before submitting a Pull Request
+```bash
+phpunit --bootstrap craft/app/tests/bootstrap.php --configuration craft/app/tests/phpunit.xml craft/plugins migrationshelper/tests
+``` 
+
 Changelog
 =================
 ###0.1.0###
