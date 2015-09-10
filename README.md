@@ -38,10 +38,7 @@ Helpers
  * @param string $handle     The field's handle
  * @param array  $attributes An array of key/value settings
  */
- $source = MigrationsHelper::changeFieldSettings($context, $handle, array $attributes);
-
- // Save source (e.g. Entry Type)
- craft()->sections->saveEntryType($source);
+ MigrationsHelper::changeFieldSettings($context, $handle, array $attributes);
 ```
 
 Changelog
