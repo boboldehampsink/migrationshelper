@@ -55,10 +55,10 @@ class MigrationsHelper
         }
 
         // Add the new fields to the tab
-        $fieldlayout[$tabName][] = $field->id;
+        $layout[$tabName][] = $field->id;
 
         // Asemble the layout
-        $assembledLayout = craft()->fields->assembleLayout($fieldlayout, array());
+        $assembledLayout = craft()->fields->assembleLayout($layout, array());
         $assembledLayout->type = $elementType;
 
         // Set the assembled layout on the company
