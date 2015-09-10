@@ -10,7 +10,8 @@ Helpers
 =================
 
 ####addToFieldLayout###
-```
+```php
+<?php
 /**
  * Append a field to a source's fieldlayout programmatically.
  *
@@ -28,7 +29,8 @@ Helpers
 ```
 
 ####changeFieldSettings####
-```
+```php
+<?php
 /**
  * Change the settings of a given field.
  *
