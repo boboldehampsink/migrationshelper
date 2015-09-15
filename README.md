@@ -50,5 +50,8 @@ phpunit --bootstrap craft/app/tests/bootstrap.php --configuration craft/app/test
 
 Changelog
 =================
+###0.2.0###
+- Added unit tests for development
+
 ###0.1.0###
 - Initial push to GitHub
