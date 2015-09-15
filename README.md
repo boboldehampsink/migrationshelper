@@ -1,4 +1,4 @@
-Migrations Helper plugin for Craft CMS
+Migrations Helper plugin for Craft CMS [![Build Status](https://travis-ci.org/boboldehampsink/migrationshelper.svg?branch=develop)](https://travis-ci.org/boboldehampsink/migrationshelper)
 =================
 
 Plugin that helps you write complex migrations.
@@ -45,8 +45,8 @@ Development
 =================
 Run this from your Craft installation to test your changes to this plugin before submitting a Pull Request
 ```bash
-phpunit --bootstrap craft/app/tests/bootstrap.php --configuration craft/app/tests/phpunit.xml craft/plugins migrationshelper/tests
-``` 
+phpunit --bootstrap craft/app/tests/bootstrap.php --configuration craft/app/tests/phpunit.xml craft/plugins/migrationshelper/tests
+```
 
 Changelog
 =================
