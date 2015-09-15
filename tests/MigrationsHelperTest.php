@@ -137,7 +137,7 @@ class MigrationsHelperTest extends BaseTest
      */
     private function setMockFieldsService()
     {
-        $mock = $this->getMockBuilder(FieldsService::class)
+        $mock = $this->getMockBuilder('Craft\FieldsService')
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -155,7 +155,7 @@ class MigrationsHelperTest extends BaseTest
      */
     private function getMockFieldModel()
     {
-        $mock = $this->getMockBuilder(FieldModel::class)
+        $mock = $this->getMockBuilder('Craft\FieldModel')
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -173,7 +173,7 @@ class MigrationsHelperTest extends BaseTest
      */
     private function getMockFieldType()
     {
-        $mock = $this->getMockBuilder(BaseFieldType::class)
+        $mock = $this->getMockBuilder('Craft\BaseFieldType')
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -191,7 +191,7 @@ class MigrationsHelperTest extends BaseTest
      */
     private function getMockSettings()
     {
-        $mock = $this->getMockBuilder(BaseModel::class)
+        $mock = $this->getMockBuilder('Craft\BaseModel')
             ->disableOriginalConstructor()
             ->getMock();
 
