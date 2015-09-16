@@ -24,7 +24,7 @@ matrix:
     - php: 7.0
     - php: hhvm
 
-  # execute any number of scripts before the test run, custom env's are available as variables
+ # execute any number of scripts before the test run, custom env's are available as variables
 before_script:
   - curl -sS https://codeload.github.com/pixelandtonic/Craft-Release/zip/master > craft.zip
   - unzip craft.zip
@@ -36,4 +36,10 @@ before_script:
   - mkdir -p craft/plugins/migrationshelper
   - for item in *; do if [[ ! "$item" == "craft" ]]; then mv $item craft/plugins/migrationshelper; fi; done
 
-script: phpunit --bootstrap craft/app/tests/bootstrap.php --configuration craft/plugins/migrationshelper/phpunit.xml.dist craft/plugins/migrationshelper/tests
+# execute tests
+script: phpunit --bootstrap craft/app/tests/bootstrap.php --configuration craft/plugins/migrationshelper/phpunit.xml.dist --coverage-clover coverage.clover craft/plugins/migrationshelper/tests
+
+# upload coverage to scrutinizer
+after_script:
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
