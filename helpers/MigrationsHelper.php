@@ -79,7 +79,7 @@ class MigrationsHelper
     public static function changeFieldSettings($context, $handle, array $attributes)
     {
         // Get original field context
-        $context = craft()->content->fieldContext;
+        $original = craft()->content->fieldContext;
 
         // Set matrix field context
         craft()->content->fieldContext = $context;
@@ -103,6 +103,6 @@ class MigrationsHelper
         craft()->fields->saveField($field);
 
         // Revert to original field context
-        craft()->content->fieldContext = $context;
+        craft()->content->fieldContext = $original;
     }
 }
