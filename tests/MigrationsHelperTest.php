@@ -41,18 +41,30 @@ class MigrationsHelperTest extends BaseTest
      */
     public function testAddToEntryTypeFieldLayout()
     {
-        // Set up empty models
+        // Mock fields service
+        $this->setMockFieldsService();
+
+        // Mock a fieldlayout
+        $layout = craft()->fields->assembleLayout(array(
+            'tab' => array(1, 2)
+        ), array());
+
+        // Set up source model
         $source = new EntryTypeModel();
+        $source->setFieldLayout($layout);
+
+        // Set up empty field
         $field = new FieldModel();
+        $field->id = 1;
 
         // Get field layout fields
         $fields = $source->getFieldLayout()->getFields();
 
-        // Should contain no occurence
-        $this->assertCount(0, $fields);
+        // Should contain two occurences
+        $this->assertCount(2, $fields);
 
         // Run function
-        $source = MigrationsHelper::addToFieldLayout($source, $field);
+        $source = MigrationsHelper::addToFieldLayout($source, $field, 0, 'tab');
 
         // Assert result
         $this->assertInstanceOf('Craft\EntryTypeModel', $source);
@@ -60,8 +72,8 @@ class MigrationsHelperTest extends BaseTest
         // Get field layout fields
         $fields = $source->getFieldLayout()->getFields();
 
-        // Should contain one occurence
-        $this->assertCount(1, $fields);
+        // Should contain three occurences
+        $this->assertCount(3, $fields);
     }
 
     /**
@@ -69,18 +81,30 @@ class MigrationsHelperTest extends BaseTest
      */
     public function testAddToCategoryGroupFieldLayout()
     {
-        // Set up empty models
+        // Mock fields service
+        $this->setMockFieldsService();
+
+        // Mock a fieldlayout
+        $layout = craft()->fields->assembleLayout(array(
+            'tab' => array(1, 2)
+        ), array());
+
+        // Set up source model
         $source = new CategoryGroupModel();
+        $source->setFieldLayout($layout);
+
+        // Set up empty field
         $field = new FieldModel();
+        $field->id = 1;
 
         // Get field layout fields
         $fields = $source->getFieldLayout()->getFields();
 
-        // Should contain no occurence
-        $this->assertCount(0, $fields);
+        // Should contain two occurences
+        $this->assertCount(2, $fields);
 
         // Run function
-        $source = MigrationsHelper::addToFieldLayout($source, $field);
+        $source = MigrationsHelper::addToFieldLayout($source, $field, 0, 'tab');
 
         // Assert result
         $this->assertInstanceOf('Craft\CategoryGroupModel', $source);
@@ -88,8 +112,8 @@ class MigrationsHelperTest extends BaseTest
         // Get field layout fields
         $fields = $source->getFieldLayout()->getFields();
 
-        // Should contain one occurence
-        $this->assertCount(1, $fields);
+        // Should contain three occurences
+        $this->assertCount(3, $fields);
     }
 
     /**
@@ -138,14 +162,16 @@ class MigrationsHelperTest extends BaseTest
     private function setMockFieldsService()
     {
         $mock = $this->getMockBuilder('Craft\FieldsService')
-            ->disableOriginalConstructor()
+            ->setMethods(array('getFieldById', 'getFieldByHandle', 'saveField'))
             ->getMock();
 
         $field = $this->getMockFieldModel();
 
+        $mock->expects($this->any())->method('getFieldById')->willReturn($field);
         $mock->expects($this->any())->method('getFieldByHandle')->willReturn($field);
+        $mock->expects($this->any())->method('saveField')->willReturn(true);
 
-        craft()->setComponent('fields', $mock);
+        $this->setComponent(craft(), 'fields', $mock);
     }
 
     /**
