@@ -33,7 +33,7 @@ class MigrationsHelperTest extends BaseTest
         $this->setExpectedException(get_class(new \PHPUnit_Framework_Error('', 0, '', 1)));
 
         // Test type hinting correctness
-        MigrationsHelper::addToFieldLayout(ElementType::Entry, new \stdClass(), new \stdClass(), 'tab');
+        MigrationsHelper::addToFieldLayout(new \stdClass(), new \stdClass());
     }
 
     /**
@@ -52,7 +52,7 @@ class MigrationsHelperTest extends BaseTest
         $this->assertCount(0, $fields);
 
         // Run function
-        $source = MigrationsHelper::addToFieldLayout(ElementType::Entry, $source, $field, 'test');
+        $source = MigrationsHelper::addToFieldLayout($source, $field);
 
         // Assert result
         $this->assertInstanceOf('Craft\EntryTypeModel', $source);
@@ -80,7 +80,7 @@ class MigrationsHelperTest extends BaseTest
         $this->assertCount(0, $fields);
 
         // Run function
-        $source = MigrationsHelper::addToFieldLayout(ElementType::Category, $source, $field, 'test');
+        $source = MigrationsHelper::addToFieldLayout($source, $field);
 
         // Assert result
         $this->assertInstanceOf('Craft\CategoryGroupModel', $source);
