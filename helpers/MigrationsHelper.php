@@ -16,20 +16,22 @@ class MigrationsHelper
     /**
      * Append a field to a source's fieldlayout programmatically.
      *
-     * @param string     $elementType The fieldlayout's Element Type
      * @param BaseModel  $source      The element's source (e.g. a EntryTypeModel or CategoryGroupModel)
      * @param FieldModel $field       The field's model
      * @param string     $tabName     The fieldlayout's tab (optional)
      *
      * @return BaseModel
      */
-    public static function addToFieldLayout($elementType, BaseModel $source, FieldModel $field, $tabName = '')
+    public static function addToFieldLayout(BaseModel $source, FieldModel $field, $tabName = '')
     {
         // Assemble layout array
         $layout = array();
 
         // Get fieldlayout
         $fieldlayout = $source->getFieldLayout();
+
+        // Get element type
+        $elementType = $source->elementType;
 
         // Get field layout tabs
         $fieldlayouttabs = $fieldlayout->getTabs();
