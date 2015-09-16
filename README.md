@@ -18,11 +18,11 @@ Helpers
  * @param string     $elementType The fieldlayout's Element Type
  * @param BaseModel  $source      The element's source (e.g. a EntryTypeModel or CategoryGroupModel)
  * @param FieldModel $field       The field's model
- * @param string     $tabName     The fieldlayout's tab
+ * @param string     $tabName     The fieldlayout's tab (optional)
  *
  * @return BaseModel
  */
- $source = MigrationsHelper::addToFieldLayout($elementType, BaseModel $source, FieldModel $field, $tabName);
+ $source = MigrationsHelper::addToFieldLayout($elementType, BaseModel $source, FieldModel $field, $tabName = '');
 
  // Save source (e.g. Entry Type)
  craft()->sections->saveEntryType($source);

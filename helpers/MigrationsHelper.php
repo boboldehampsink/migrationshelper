@@ -19,11 +19,11 @@ class MigrationsHelper
      * @param string     $elementType The fieldlayout's Element Type
      * @param BaseModel  $source      The element's source (e.g. a EntryTypeModel or CategoryGroupModel)
      * @param FieldModel $field       The field's model
-     * @param string     $tabName     The fieldlayout's tab
+     * @param string     $tabName     The fieldlayout's tab (optional)
      *
      * @return BaseModel
      */
-    public static function addToFieldLayout($elementType, BaseModel $source, FieldModel $field, $tabName)
+    public static function addToFieldLayout($elementType, BaseModel $source, FieldModel $field, $tabName = '')
     {
         // Assemble layout array
         $layout = array();
@@ -55,6 +55,7 @@ class MigrationsHelper
         $layout[$tabName][] = $field->id;
 
         // Asemble the layout
+        // @TODO - Set required fields
         $assembledLayout = craft()->fields->assembleLayout($layout, array());
         $assembledLayout->type = $elementType;
 
