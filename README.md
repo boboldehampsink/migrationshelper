@@ -1,4 +1,4 @@
-Migrations Helper plugin for Craft CMS [![Build Status](https://travis-ci.org/boboldehampsink/migrationshelper.svg?branch=develop)](https://travis-ci.org/boboldehampsink/migrationshelper) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/boboldehampsink/migrationshelper/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/boboldehampsink/migrationshelper/?branch=develop)
+Migrations Helper plugin for Craft CMS [![Build Status](https://travis-ci.org/boboldehampsink/migrationshelper.svg?branch=develop)](https://travis-ci.org/boboldehampsink/migrationshelper) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/boboldehampsink/migrationshelper/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/boboldehampsink/migrationshelper/?branch=develop) [![Code Coverage](https://scrutinizer-ci.com/g/boboldehampsink/migrationshelper/badges/coverage.png?b=develop)](https://scrutinizer-ci.com/g/boboldehampsink/migrationshelper/?branch=develop)
 =================
 
 Plugin that helps you write complex migrations.
