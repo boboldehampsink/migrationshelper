@@ -14,6 +14,18 @@ Tips
 Helpers
 =================
 
+####getFieldGroupByName###
+```php
+<?php
+/**
+ * Get a field group by name
+ *
+ * @param  string $name
+ * @return FieldGroupModel|null
+ */
+$group = MigrationsHelper::getFieldGroupByName($name);
+```
+
 ####addToFieldLayout###
 ```php
 <?php
@@ -55,6 +67,9 @@ phpunit --bootstrap craft/app/tests/bootstrap.php --configuration craft/plugins/
 
 Changelog
 =================
+###0.5.0###
+- Added getFieldGroupByName helper to easily get field groups
+
 ###0.4.0###
 - Improved unit tests for development
 
