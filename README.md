@@ -55,6 +55,9 @@ phpunit --bootstrap craft/app/tests/bootstrap.php --configuration craft/app/test
 
 Changelog
 =================
+###0.3.1###
+- Fixed field context not setting correctly
+
 ###0.3.0###
 - Added the ability to insert the field on a specified (tab) index
 - ElementType is not an argument anymore
