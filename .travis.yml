@@ -36,4 +36,4 @@ before_script:
   - mkdir -p craft/plugins/migrationshelper
   - for item in *; do if [[ ! "$item" == "craft" ]]; then mv $item craft/plugins/migrationshelper; fi; done
 
-script: phpunit --bootstrap craft/app/tests/bootstrap.php --configuration craft/app/tests/phpunit.xml craft/plugins/migrationshelper/tests
+script: phpunit --bootstrap craft/app/tests/bootstrap.php --configuration craft/plugins/migrationshelper/phpunit.xml.dist craft/plugins/migrationshelper/tests
