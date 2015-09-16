@@ -31,7 +31,6 @@ class MigrationsHelperTest extends BaseTest
      * Test get field group by name
      *
      * @covers ::getFieldGroupByName
-     * @dataProvider provideFieldGroupNames
      */
     final public function testGetFieldGroupByName()
     {
