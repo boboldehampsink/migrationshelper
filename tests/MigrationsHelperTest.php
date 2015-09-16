@@ -12,6 +12,9 @@ namespace Craft;
  * @license   MIT
  *
  * @link      http://github.com/boboldehampsink
+ *
+ * @coversDefaultClass Craft\MigrationsHelper
+ * @covers ::<!public>
  */
 class MigrationsHelperTest extends BaseTest
 {
@@ -27,65 +30,38 @@ class MigrationsHelperTest extends BaseTest
     /**
      * Test addToFieldLayout type hinting.
      *
-     * @covers MigrationsHelper::addToFieldLayout
+     * @covers ::addToFieldLayout
+     * @dataProvider provideInvalidTypesForAddToFieldLayout
      */
-    public function testAddToFieldLayoutTypeHinting()
+    public function testAddToFieldLayoutTypeHinting($source, $field)
     {
         // Expect exception
-        $this->setExpectedException(get_class(new \PHPUnit_Framework_Error('', 0, '', 1)));
+        $this->setExpectedException('\PHPUnit_Framework_Error');
 
         // Test type hinting correctness
-        MigrationsHelper::addToFieldLayout(new \stdClass(), new \stdClass());
+        MigrationsHelper::addToFieldLayout($source, $field);
     }
 
     /**
-     * Test addToFieldLayout result for entry types.
-     *
-     * @covers MigrationsHelper::addToFieldLayout
+     * Provide invalid types for addToFieldLayout
+     * @return array
      */
-    public function testAddToEntryTypeFieldLayout()
+    final public function provideInvalidTypesForAddToFieldLayout()
     {
-        // Mock fields service
-        $this->setMockFieldsService();
-
-        // Mock a fieldlayout
-        $layout = craft()->fields->assembleLayout(array(
-            'tab' => array(1, 2)
-        ), array());
-
-        // Set up source model
-        $source = new EntryTypeModel();
-        $source->setFieldLayout($layout);
-
-        // Set up empty field
-        $field = new FieldModel();
-        $field->id = 1;
-
-        // Get field layout fields
-        $fields = $source->getFieldLayout()->getFields();
-
-        // Should contain two occurences
-        $this->assertCount(2, $fields);
-
-        // Run function
-        $source = MigrationsHelper::addToFieldLayout($source, $field, 0, 'tab');
-
-        // Assert result
-        $this->assertInstanceOf('Craft\EntryTypeModel', $source);
-
-        // Get field layout fields
-        $fields = $source->getFieldLayout()->getFields();
-
-        // Should contain three occurences
-        $this->assertCount(3, $fields);
+        return array(
+            'NULL' => array(null, null),
+            'Incorrect Data Type' => array(array(), 'string'),
+            'Incorrect Class Type' => array(new \stdClass, new \stdClass),
+        );
     }
 
     /**
      * Test addToFieldLayout result for category groups.
      *
-     * @covers MigrationsHelper::addToFieldLayout
+     * @covers ::addToFieldLayout
+     * @dataProvider provideFieldLayoutSource
      */
-    public function testAddToCategoryGroupFieldLayout()
+    final public function testAddToFieldLayout($source)
     {
         // Mock fields service
         $this->setMockFieldsService();
@@ -95,8 +71,7 @@ class MigrationsHelperTest extends BaseTest
             'tab' => array(1, 2)
         ), array());
 
-        // Set up source model
-        $source = new CategoryGroupModel();
+        // Set fieldlayout on source
         $source->setFieldLayout($layout);
 
         // Set up empty field
@@ -112,9 +87,6 @@ class MigrationsHelperTest extends BaseTest
         // Run function
         $source = MigrationsHelper::addToFieldLayout($source, $field, 0, 'tab');
 
-        // Assert result
-        $this->assertInstanceOf('Craft\CategoryGroupModel', $source);
-
         // Get field layout fields
         $fields = $source->getFieldLayout()->getFields();
 
@@ -123,11 +95,27 @@ class MigrationsHelperTest extends BaseTest
     }
 
     /**
+     * Provide source models for addToFieldLayout
+     * @return array
+     */
+    final public function provideFieldLayoutSource()
+    {
+        return array(
+            'EntryTypeModel'        => array(new EntryTypeModel),
+            'CategoryGroupModel'    => array(new CategoryGroupModel),
+            'AssetSourceModel'      => array(new AssetSourceModel),
+            'TagGroupModel'         => array(new TagGroupModel),
+            'GlobalSetModel'        => array(new GlobalSetModel),
+            'MatrixBlockTypeModel'  => array(new MatrixBlockTypeModel),
+        );
+    }
+
+    /**
      * Test changeFieldSettings type hinting.
      *
-     * @covers MigrationsHelper::changeFieldSettings
+     * @covers ::changeFieldSettings
      */
-    public function testChangeFieldSettingsTypeHinting()
+    final public function testChangeFieldSettingsTypeHinting()
     {
         // Expect exception
         $this->setExpectedException(get_class(new \PHPUnit_Framework_Error('', 0, '', 1)));
@@ -137,11 +125,39 @@ class MigrationsHelperTest extends BaseTest
     }
 
     /**
+     * Test changeFieldSettings type hinting.
+     *
+     * @covers ::changeFieldSettings
+     * @dataProvider provideInvalidTypesForChangeFieldSettings
+     */
+    final public function testChangeFieldSettingsHinting($global, $handle, $string)
+    {
+        // Expect exception
+        $this->setExpectedException('\PHPUnit_Framework_Error');
+
+        // Test type hinting correctness
+        MigrationsHelper::changeFieldSettings($global, $handle, $string);
+    }
+
+    /**
+     * Provide invalid types for changeFieldSettings
+     * @return array
+     */
+    final public function provideInvalidTypesForChangeFieldSettings()
+    {
+        return array(
+            'NULL' => array(null, null, null),
+            'Incorrect Data Type' => array(array(), 'string', 1),
+            'Incorrect Class Type' => array(new \stdClass, new \stdClass, new \stdClass),
+        );
+    }
+
+    /**
      * Test field settings change.
      *
-     * @covers MigrationsHelper::changeFieldSettings
+     * @covers ::changeFieldSettings
      */
-    public function testChangeFieldSettings()
+    final public function testChangeFieldSettings()
     {
         // Mock fields service
         $this->setMockFieldsService();
