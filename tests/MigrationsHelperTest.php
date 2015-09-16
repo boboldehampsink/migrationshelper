@@ -26,6 +26,8 @@ class MigrationsHelperTest extends BaseTest
 
     /**
      * Test addToFieldLayout type hinting.
+     *
+     * @covers MigrationsHelper::addToFieldLayout
      */
     public function testAddToFieldLayoutTypeHinting()
     {
@@ -38,6 +40,8 @@ class MigrationsHelperTest extends BaseTest
 
     /**
      * Test addToFieldLayout result for entry types.
+     *
+     * @covers MigrationsHelper::addToFieldLayout
      */
     public function testAddToEntryTypeFieldLayout()
     {
@@ -78,6 +82,8 @@ class MigrationsHelperTest extends BaseTest
 
     /**
      * Test addToFieldLayout result for category groups.
+     *
+     * @covers MigrationsHelper::addToFieldLayout
      */
     public function testAddToCategoryGroupFieldLayout()
     {
@@ -118,6 +124,8 @@ class MigrationsHelperTest extends BaseTest
 
     /**
      * Test changeFieldSettings type hinting.
+     *
+     * @covers MigrationsHelper::changeFieldSettings
      */
     public function testChangeFieldSettingsTypeHinting()
     {
@@ -130,6 +138,8 @@ class MigrationsHelperTest extends BaseTest
 
     /**
      * Test field settings change.
+     *
+     * @covers MigrationsHelper::changeFieldSettings
      */
     public function testChangeFieldSettings()
     {
