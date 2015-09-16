@@ -6,6 +6,11 @@ Plugin that helps you write complex migrations.
 __Important:__
 The plugin's folder should be named "migrationshelper"
 
+Tips
+=================
+
+* You don't need to install this plugin. As long as you require the helper file you can use its functions.
+
 Helpers
 =================
 
