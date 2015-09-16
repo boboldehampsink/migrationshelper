@@ -55,6 +55,9 @@ phpunit --bootstrap craft/app/tests/bootstrap.php --configuration craft/plugins/
 
 Changelog
 =================
+###0.4.0###
+- Improved unit tests for development
+
 ###0.3.1###
 - Fixed field context not setting correctly
 
