@@ -33,7 +33,7 @@ class MigrationsHelperTest extends BaseTest
      * @covers ::addToFieldLayout
      * @dataProvider provideInvalidTypesForAddToFieldLayout
      */
-    public function testAddToFieldLayoutTypeHinting($source, $field)
+    final public function testAddToFieldLayoutTypeHinting($source, $field)
     {
         // Expect exception
         $this->setExpectedException('\PHPUnit_Framework_Error');
