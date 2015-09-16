@@ -50,7 +50,7 @@ Development
 =================
 Run this from your Craft installation to test your changes to this plugin before submitting a Pull Request
 ```bash
-phpunit --bootstrap craft/app/tests/bootstrap.php --configuration craft/app/tests/phpunit.xml craft/plugins/migrationshelper/tests
+phpunit --bootstrap craft/app/tests/bootstrap.php --configuration craft/plugins/migrationshelper/phpunit.xml.dist craft/plugins/migrationshelper/tests
 ```
 
 Changelog
