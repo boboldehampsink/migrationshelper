@@ -55,6 +55,11 @@ phpunit --bootstrap craft/app/tests/bootstrap.php --configuration craft/app/test
 
 Changelog
 =================
+###0.3.0###
+- Added the ability to insert the field on a specified (tab) index
+- ElementType is not an argument anymore
+- Tabname is now optional
+
 ###0.2.0###
 - Added unit tests for development
 
