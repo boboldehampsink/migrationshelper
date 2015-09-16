@@ -105,7 +105,7 @@ class MigrationsHelperTest extends BaseTest
             'CategoryGroupModel'    => array(new CategoryGroupModel),
             'AssetSourceModel'      => array(new AssetSourceModel),
             'TagGroupModel'         => array(new TagGroupModel),
-            'GlobalSetModel'        => array(new GlobalSetModel),
+            //'GlobalSetModel'        => array(new GlobalSetModel),
             'MatrixBlockTypeModel'  => array(new MatrixBlockTypeModel),
         );
     }
