@@ -28,6 +28,30 @@ class MigrationsHelperTest extends BaseTest
     }
 
     /**
+     * Test get field group by name
+     *
+     * @covers ::getFieldGroupByName
+     * @dataProvider provideFieldGroupNames
+     */
+    final public function testGetFieldGroupByName()
+    {
+        // Mock fields service
+        $this->setMockFieldsService();
+
+        // Get mocked group
+        $group = MigrationsHelper::getFieldGroupByName('Test 1');
+
+        // This should be a valid group
+        $this->assertInstanceOf('Craft\FieldGroupModel', $group);
+
+        // Get a non-existing mocked group
+        $group = MigrationsHelper::getFieldGroupByName('Nothing');
+
+        // This should be null
+        $this->assertNull($group);
+    }
+
+    /**
      * Test addToFieldLayout type hinting.
      *
      * @covers ::addToFieldLayout
@@ -187,16 +211,31 @@ class MigrationsHelperTest extends BaseTest
     private function setMockFieldsService()
     {
         $mock = $this->getMockBuilder('Craft\FieldsService')
-            ->setMethods(array('getFieldById', 'getFieldByHandle', 'saveField'))
+            ->setMethods(array('getAllGroups', 'getFieldById', 'getFieldByHandle', 'saveField'))
             ->getMock();
 
+        $groups = $this->getMockFieldGroupModels();
         $field = $this->getMockFieldModel();
 
+        $mock->expects($this->any())->method('getAllGroups')->willReturn($groups);
         $mock->expects($this->any())->method('getFieldById')->willReturn($field);
         $mock->expects($this->any())->method('getFieldByHandle')->willReturn($field);
         $mock->expects($this->any())->method('saveField')->willReturn(true);
 
         $this->setComponent(craft(), 'fields', $mock);
+    }
+
+    /**
+     * Mock Field Group Models.
+     *
+     * @return FieldGroupModel[]
+     */
+    private function getMockFieldGroupModels()
+    {
+        return array(
+            new FieldGroupModel(array('id' => 1, 'name' => 'Test 1')),
+            new FieldGroupModel(array('id' => 2, 'name' => 'Test 2')),
+        );
     }
 
     /**

@@ -14,6 +14,27 @@ namespace Craft;
 class MigrationsHelper
 {
     /**
+     * Get a field group by name
+     *
+     * @param  string $name
+     * @return FieldGroupModel|null
+     */
+    public static function getFieldGroupByName($name)
+    {
+        // Get all field groups
+        $groups = craft()->fields->getAllGroups();
+
+        // Loop through field groups
+        foreach ($groups as $group) {
+
+            // Return matching group
+            if ($group->name == $name) {
+                return $group;
+            }
+        }
+    }
+    
+    /**
      * Append a field to a source's fieldlayout programmatically.
      *
      * @param BaseModel  $source      The element's source (e.g. a EntryTypeModel or CategoryGroupModel)
