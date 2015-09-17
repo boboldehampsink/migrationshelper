@@ -67,6 +67,9 @@ phpunit --bootstrap craft/app/tests/bootstrap.php --configuration craft/plugins/
 
 Changelog
 =================
+###0.5.1###
+- Added MIT license to composer.json
+
 ###0.5.0###
 - Added getFieldGroupByName helper to easily get field groups
 
