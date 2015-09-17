@@ -140,7 +140,7 @@ class MigrationsHelperTest extends BaseTest
     final public function testChangeFieldSettingsTypeHinting()
     {
         // Expect exception
-        $this->setExpectedException(get_class(new \PHPUnit_Framework_Error('', 0, '', 1)));
+        $this->setExpectedException('\PHPUnit_Framework_Error');
 
         // Test type hinting correctness
         MigrationsHelper::changeFieldSettings('global', 'handle', 'string');
