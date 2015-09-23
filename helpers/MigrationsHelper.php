@@ -33,7 +33,7 @@ class MigrationsHelper
             }
         }
     }
-    
+
     /**
      * Append a field to a source's fieldlayout programmatically.
      *
@@ -47,7 +47,7 @@ class MigrationsHelper
     public static function addToFieldLayout(BaseModel $source, FieldModel $field, $index = 0, $tabName = '')
     {
         // Assemble layout array
-        $layout = array();
+        $layout = array($tabName => array());
 
         // Get fieldlayout
         $fieldlayout = $source->getFieldLayout();
