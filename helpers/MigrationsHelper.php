@@ -14,22 +14,46 @@ namespace Craft;
 class MigrationsHelper
 {
     /**
+     * Get a field group by name
+     *
+     * @param  string $name
+     * @return FieldGroupModel|null
+     */
+    public static function getFieldGroupByName($name)
+    {
+        // Get all field groups
+        $groups = craft()->fields->getAllGroups();
+
+        // Loop through field groups
+        foreach ($groups as $group) {
+
+            // Return matching group
+            if ($group->name == $name) {
+                return $group;
+            }
+        }
+    }
+    
+    /**
      * Append a field to a source's fieldlayout programmatically.
      *
-     * @param string     $elementType The fieldlayout's Element Type
      * @param BaseModel  $source      The element's source (e.g. a EntryTypeModel or CategoryGroupModel)
      * @param FieldModel $field       The field's model
-     * @param string     $tabName     The fieldlayout's tab
+     * @param int        $index       The index of the field on the tab (optional - defaults to 0)
+     * @param string     $tabName     The fieldlayout's tab (optional)
      *
      * @return BaseModel
      */
-    public static function addToFieldLayout($elementType, BaseModel $source, FieldModel $field, $tabName)
+    public static function addToFieldLayout(BaseModel $source, FieldModel $field, $index = 0, $tabName = '')
     {
         // Assemble layout array
         $layout = array();
 
         // Get fieldlayout
         $fieldlayout = $source->getFieldLayout();
+
+        // Get element type
+        $elementType = $source->elementType;
 
         // Get field layout tabs
         $fieldlayouttabs = $fieldlayout->getTabs();
@@ -52,9 +76,10 @@ class MigrationsHelper
         }
 
         // Add the new fields to the tab
-        $layout[$tabName][] = $field->id;
+        array_splice($layout[$tabName], $index, 0, $field->id);
 
         // Asemble the layout
+        // @TODO - Set required fields
         $assembledLayout = craft()->fields->assembleLayout($layout, array());
         $assembledLayout->type = $elementType;
 
@@ -75,7 +100,7 @@ class MigrationsHelper
     public static function changeFieldSettings($context, $handle, array $attributes)
     {
         // Get original field context
-        $context = craft()->content->fieldContext;
+        $original = craft()->content->fieldContext;
 
         // Set matrix field context
         craft()->content->fieldContext = $context;
@@ -99,6 +124,6 @@ class MigrationsHelper
         craft()->fields->saveField($field);
 
         // Revert to original field context
-        craft()->content->fieldContext = $context;
+        craft()->content->fieldContext = $original;
     }
 }
