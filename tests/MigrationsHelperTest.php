@@ -28,7 +28,7 @@ class MigrationsHelperTest extends BaseTest
     }
 
     /**
-     * Test get field group by name
+     * Test get field group by name.
      *
      * @covers ::getFieldGroupByName
      */
@@ -66,7 +66,8 @@ class MigrationsHelperTest extends BaseTest
     }
 
     /**
-     * Provide invalid types for addToFieldLayout
+     * Provide invalid types for addToFieldLayout.
+     *
      * @return array
      */
     final public function provideInvalidTypesForAddToFieldLayout()
@@ -74,7 +75,7 @@ class MigrationsHelperTest extends BaseTest
         return array(
             'NULL' => array(null, null),
             'Incorrect Data Type' => array(array(), 'string'),
-            'Incorrect Class Type' => array(new \stdClass, new \stdClass),
+            'Incorrect Class Type' => array(new \stdClass(), new \stdClass()),
         );
     }
 
@@ -91,7 +92,7 @@ class MigrationsHelperTest extends BaseTest
 
         // Mock a fieldlayout
         $layout = craft()->fields->assembleLayout(array(
-            'tab' => array(1, 2)
+            'tab' => array(1, 2),
         ), array());
 
         // Set fieldlayout on source
@@ -108,7 +109,7 @@ class MigrationsHelperTest extends BaseTest
         $this->assertCount(2, $fields);
 
         // Run function
-        $source = MigrationsHelper::addToFieldLayout($source, $field, 0, 'tab');
+        MigrationsHelper::addToFieldLayout($source, $field, 0, 'tab');
 
         // Get field layout fields
         $fields = $source->getFieldLayout()->getFields();
@@ -118,17 +119,18 @@ class MigrationsHelperTest extends BaseTest
     }
 
     /**
-     * Provide source models for addToFieldLayout
+     * Provide source models for addToFieldLayout.
+     *
      * @return array
      */
     final public function provideFieldLayoutSource()
     {
         return array(
-            'EntryTypeModel'        => array(new EntryTypeModel),
-            'CategoryGroupModel'    => array(new CategoryGroupModel),
-            'AssetSourceModel'      => array(new AssetSourceModel),
-            'TagGroupModel'         => array(new TagGroupModel),
-            'MatrixBlockTypeModel'  => array(new MatrixBlockTypeModel),
+            'EntryTypeModel'        => array(new EntryTypeModel()),
+            'CategoryGroupModel'    => array(new CategoryGroupModel()),
+            'AssetSourceModel'      => array(new AssetSourceModel()),
+            'TagGroupModel'         => array(new TagGroupModel()),
+            'MatrixBlockTypeModel'  => array(new MatrixBlockTypeModel()),
         );
     }
 
@@ -162,7 +164,8 @@ class MigrationsHelperTest extends BaseTest
     }
 
     /**
-     * Provide invalid types for changeFieldSettings
+     * Provide invalid types for changeFieldSettings.
+     *
      * @return array
      */
     final public function provideInvalidTypesForChangeFieldSettings()
@@ -170,7 +173,7 @@ class MigrationsHelperTest extends BaseTest
         return array(
             'NULL' => array(null, null, null),
             'Incorrect Data Type' => array(array(), 'string', 1),
-            'Incorrect Class Type' => array(new \stdClass, new \stdClass, new \stdClass),
+            'Incorrect Class Type' => array(new \stdClass(), new \stdClass(), new \stdClass()),
         );
     }
 
