@@ -67,6 +67,10 @@ phpunit --bootstrap craft/app/tests/bootstrap.php --configuration craft/plugins/
 
 Changelog
 =================
+###0.5.2###
+- Don't return source object as its already by reference
+- Set an empty array as default layout for the tabName in case it does not exist yet
+
 ###0.5.1###
 - Added MIT license to composer.json
 
