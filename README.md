@@ -39,10 +39,10 @@ $group = MigrationsHelper::getFieldGroupByName($name);
  *
  * @return BaseModel
  */
- $source = MigrationsHelper::addToFieldLayout(BaseModel $source, FieldModel $field, $index = 0, $tabName = '');
+MigrationsHelper::addToFieldLayout(BaseModel $source, FieldModel $field, $index = 0, $tabName = '');
 
- // Save source (e.g. Entry Type)
- craft()->sections->saveEntryType($source);
+// Save source (e.g. Entry Type)
+craft()->sections->saveEntryType($source);
 ```
 
 ####changeFieldSettings####

@@ -14,9 +14,10 @@ namespace Craft;
 class MigrationsHelper
 {
     /**
-     * Get a field group by name
+     * Get a field group by name.
      *
-     * @param  string $name
+     * @param string $name
+     *
      * @return FieldGroupModel|null
      */
     public static function getFieldGroupByName($name)
@@ -37,12 +38,10 @@ class MigrationsHelper
     /**
      * Append a field to a source's fieldlayout programmatically.
      *
-     * @param BaseModel  $source      The element's source (e.g. a EntryTypeModel or CategoryGroupModel)
-     * @param FieldModel $field       The field's model
-     * @param int        $index       The index of the field on the tab (optional - defaults to 0)
-     * @param string     $tabName     The fieldlayout's tab (optional)
-     *
-     * @return BaseModel
+     * @param BaseModel  $source  The element's source (e.g. a EntryTypeModel or CategoryGroupModel)
+     * @param FieldModel $field   The field's model
+     * @param int        $index   The index of the field on the tab (optional - defaults to 0)
+     * @param string     $tabName The fieldlayout's tab (optional)
      */
     public static function addToFieldLayout(BaseModel $source, FieldModel $field, $index = 0, $tabName = '')
     {
@@ -85,9 +84,6 @@ class MigrationsHelper
 
         // Set the assembled layout on the company
         $source->setFieldLayout($assembledLayout);
-
-        // Return source
-        return $source;
     }
 
     /**
