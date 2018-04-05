@@ -1,10 +1,15 @@
-Migrations Helper plugin for Craft CMS [![Build Status](https://travis-ci.org/boboldehampsink/migrationshelper.svg?branch=develop)](https://travis-ci.org/boboldehampsink/migrationshelper) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/boboldehampsink/migrationshelper/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/boboldehampsink/migrationshelper/?branch=develop) [![Code Coverage](https://scrutinizer-ci.com/g/boboldehampsink/migrationshelper/badges/coverage.png?b=develop)](https://scrutinizer-ci.com/g/boboldehampsink/migrationshelper/?branch=develop) [![Latest Stable Version](https://poser.pugx.org/boboldehampsink/migrationshelper/v/stable)](https://packagist.org/packages/boboldehampsink/migrationshelper) [![Total Downloads](https://poser.pugx.org/boboldehampsink/migrationshelper/downloads)](https://packagist.org/packages/boboldehampsink/migrationshelper) [![Latest Unstable Version](https://poser.pugx.org/boboldehampsink/migrationshelper/v/unstable)](https://packagist.org/packages/boboldehampsink/migrationshelper) [![License](https://poser.pugx.org/boboldehampsink/migrationshelper/license)](https://packagist.org/packages/boboldehampsink/migrationshelper)
+DEPRECATED - Migrations Helper plugin for Craft CMS [![Build Status](https://travis-ci.org/boboldehampsink/migrationshelper.svg?branch=develop)](https://travis-ci.org/boboldehampsink/migrationshelper) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/boboldehampsink/migrationshelper/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/boboldehampsink/migrationshelper/?branch=develop) [![Code Coverage](https://scrutinizer-ci.com/g/boboldehampsink/migrationshelper/badges/coverage.png?b=develop)](https://scrutinizer-ci.com/g/boboldehampsink/migrationshelper/?branch=develop) [![Latest Stable Version](https://poser.pugx.org/boboldehampsink/migrationshelper/v/stable)](https://packagist.org/packages/boboldehampsink/migrationshelper) [![Total Downloads](https://poser.pugx.org/boboldehampsink/migrationshelper/downloads)](https://packagist.org/packages/boboldehampsink/migrationshelper) [![Latest Unstable Version](https://poser.pugx.org/boboldehampsink/migrationshelper/v/unstable)](https://packagist.org/packages/boboldehampsink/migrationshelper) [![License](https://poser.pugx.org/boboldehampsink/migrationshelper/license)](https://packagist.org/packages/boboldehampsink/migrationshelper)
 =================
 
 Plugin that helps you write complex migrations.
 
 __Important:__
 The plugin's folder should be named "migrationshelper"
+
+Deprecated
+=================
+
+With the release of Craft 3 on 4-4-2018, this plugin has been deprecated. You can still use this with Craft 2 but you are encouraged to use (and develop) a Craft 3 version. At this moment, I have no plans to do so.
 
 Tips
 =================
@@ -14,7 +19,7 @@ Tips
 Helpers
 =================
 
-####getFieldGroupByName###
+#### getFieldGroupByName ###
 ```php
 <?php
 /**
@@ -26,7 +31,7 @@ Helpers
 $group = MigrationsHelper::getFieldGroupByName($name);
 ```
 
-####addToFieldLayout###
+#### addToFieldLayout ###
 ```php
 <?php
 /**
@@ -45,7 +50,7 @@ MigrationsHelper::addToFieldLayout(BaseModel $source, FieldModel $field, $index 
 craft()->sections->saveEntryType($source);
 ```
 
-####changeFieldSettings####
+#### changeFieldSettings ####
 ```php
 <?php
 /**
@@ -67,29 +72,29 @@ phpunit --bootstrap craft/app/tests/bootstrap.php --configuration craft/plugins/
 
 Changelog
 =================
-###0.5.2###
+### 0.5.2 ###
 - Don't return source object as its already by reference
 - Set an empty array as default layout for the tabName in case it does not exist yet
 
-###0.5.1###
+### 0.5.1 ###
 - Added MIT license to composer.json
 
-###0.5.0###
+### 0.5.0 ###
 - Added getFieldGroupByName helper to easily get field groups
 
-###0.4.0###
+### 0.4.0 ###
 - Improved unit tests for development
 
-###0.3.1###
+### 0.3.1 ###
 - Fixed field context not setting correctly
 
-###0.3.0###
+### 0.3.0 ###
 - Added the ability to insert the field on a specified (tab) index
 - ElementType is not an argument anymore
 - Tabname is now optional
 
-###0.2.0###
+### 0.2.0 ###
 - Added unit tests for development
 
-###0.1.0###
+### 0.1.0 ###
 - Initial push to GitHub
